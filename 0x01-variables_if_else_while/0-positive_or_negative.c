@@ -4,7 +4,7 @@
 #include <stdio.h>
 /* betty style doc for this task */
 /**
- * main - main function
+ * main - stands for the main function
  *
  * Returm: represents 0
  */
