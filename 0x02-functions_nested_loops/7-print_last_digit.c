@@ -5,16 +5,16 @@
  *
  * @i: parameter
  *
- * Return: represent r
+ * Return: represent t
  */
 
 
 int print_last_digit(int i)
 {
-	int r;
+	int t;
 
-	r = i % 10;
+	t = i % 10;
 	if (i < 0)
-		r = -r;
-	return (r);
+		t = -t;
+	return (t);
 }
