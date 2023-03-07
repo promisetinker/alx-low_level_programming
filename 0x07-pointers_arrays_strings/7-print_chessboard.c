@@ -5,15 +5,17 @@
  * @a: array
  * Return: Always 0 (Success)
  */
+
+
 void print_chessboard(char (*a)[8])
 {
 	int i;
-	int j;
+	int k;
 
 	for (i = 0; i < 8; i++)
 	{
-		for (j = 0; j < 8; j++)
-			_putchar(a[i][j]);
+		for (k = 0; k < 8; k++)
+			_putchar(a[i][k]);
 		_putchar('\n');
 	}
 }
