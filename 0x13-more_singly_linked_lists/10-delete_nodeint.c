@@ -1,52 +1,47 @@
 #include "lists.h"
 #include <stdlib.h>
 
-/**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
- *
- * Description: singly linked list node structure
- * for Holberton project
- */
-typedef struct listint_s
-{
-	int n;
-	struct listint_s *next;
-} listint_t;
+#include "lists.h"
 
 /**
- * delete_nodeint_at_index - deletes the node at index of a linked list
- * @head: double pointer to the head of the linked list
- * @index: index of the node to be deleted (starts at 0)
+ * delete_nodeint_at_index - Deletes the node at a given position
  *
- * Return: 1 if succeeded, -1 if failed
+ * @head: Pointer to the head of the list
+ * @index: Index of the node that should be deleted
+ *
+ * Return: 1 if it succeeded, -1 if it failed
  */
+
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
+	listint_t *temp, *prev;
+	unsigned int i;
+
 	if (head == NULL || *head == NULL)
 		return (-1);
 
-	listint_t *current = *head;
-	listint_t *previous = NULL;
-	unsigned int i = 0;
-
-	while (current != NULL && i < index)
+	if (index == 0)
 	{
-		previous = current;
-		current = current->next;
+		temp = *head;
+		*head = (*head)->next;
+		free(temp);
+		return (1);
+	}
+	prev = NULL;
+	temp = *head;
+	i = 0;
+
+	while (temp != NULL)
+	{
+		if (i == index)
+		{
+			prev->next = temp->next;
+			free(temp);
+			return (1);
+		}
+		prev = temp;
+		temp = temp->next;
 		i++;
 	}
-
-	if (current == NULL)
-		return (-1);
-
-	if (previous == NULL)
-		*head = current->next;
-	else
-		previous->next = current->next;
-
-	free(current);
-
-	return (1);
+	return (-1);
 }
